@@ -1,8 +1,6 @@
+### Actual Experience - React tech test
 
-### tech-test
-Actual Experience - React tech test -------
-
-# The brief ------
+# The brief
 
 Please complete the following tasks using ES6+ features, SASS and React.  Please avoid using styling libraries and off-the-shelf components, this is all about you showing us how good you can make things look, behave and perform. 
 
@@ -20,7 +18,8 @@ Build a React application that has the following components:
         // ... 
       ] 
 
-# Startup --------
+# Startup
   > cd actualxp_devtest/
   > npm start
-______________________________________________________________________________________________________________By Mark Whelan
+  
+____________________________________________________________________________________________________By Mark Whelan
