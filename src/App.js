@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
+import UserLogin from "./components/UserLogin";
+import ToggleElement from "./components/ToggleElement";
+
+import styles from './css/index.css';
+
+class App extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: null
+    }
+  }
+  
+  signIn(username, password) {
+    this.setState({
+      user: {
+        username,
+        password,
+      }
+    })
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <div className="app--container">
+          <div className="content--container">
+            { (this.state.user) ? <ToggleElement user={this.state.user} /> : <UserLogin onSignIn={this.signIn.bind(this)} /> }
+          </div>
+        </div>
       </div>
-    );
+    )
+    
   }
+  
 }
 
 export default App;

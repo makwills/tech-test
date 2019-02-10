@@ -1,0 +1,169 @@
+$primary_color: #ffcc00; 
+$secondary_color: #081c2a; 
+
+$bold: 800;
+
+@mixin bot-border() {
+  clip-path: polygon( 
+    calc(0% + 5px) calc(0% + 1px), /* top left */
+    calc(100% - 5px) calc(0% + 1px), /* top right */
+    calc(100% - 5px) calc(100% - 1px), /* bottom right */
+    calc(0% + 5px) calc(100% - 1px) /* bottom left */
+  );
+  border-bottom: solid 2px $secondary_color; 
+  transition: clip-path 0.1s linear;
+}
+
+// ---- Main
+body {
+	margin: 0;
+}
+
+
+// ---- Layout
+.app {
+  background-color: $secondary_color;
+  padding-top: 50px;
+  padding-bottom: 100px;
+	display: flex;
+	height: -webkit-fill-available;
+  height: -moz-available;
+	
+	.app--container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: $primary_color;
+    height: fit-content;
+		
+		.content--container {
+	    margin: 0 auto;
+    	width: 80%;
+    	padding: 40px 0;
+		}
+	}
+}
+
+
+// ---- Type
+h1,
+h2 {
+	color: $secondary_color;
+  font-family: 'Open Sans';
+  font-weight: $bold;
+}
+
+h1 {
+  font-size: 88px;
+  font-weight: $bold;
+  letter-spacing: -2px;
+  line-height: 84px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+
+// ---- Form
+.form--input {
+  width: 96%;
+  margin: 5px 0 20px 0;
+  height: 20px;
+  background: none;
+  border: none;
+  color: $secondary_color;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  padding: 10px 10px;
+  @include bot-border();
+  
+}
+
+.form--input:focus {
+  outline: none;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.form--submit {
+  margin-top: 40px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid $secondary_color;
+  margin-bottom: 2px;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  border-bottom: solid 2px $secondary_color; 
+  @include bot-border();
+  &:hover {
+		outline: none;
+  	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  	transition: clip-path 0.1s linear;
+  	cursor: pointer;
+  }
+}
+
+
+// ---- Toggle switch
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+}
+
+.switch--tog {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #888;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.switch--tog:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 7px;
+  bottom: 7px;
+  background-color: $primary_color;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .switch--tog {
+  background-color: $secondary_color;
+}
+
+input:checked + .switch--tog:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+ }
+
+
+
+// ---- Mobile
+@media only screen and (max-width: 850px) {
+  .app--container {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  h1 {
+  	font-size: 68px !important;
+  }
+}
